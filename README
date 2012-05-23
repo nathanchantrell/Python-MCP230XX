@@ -1,0 +1,32 @@
+Python MCP230XX I2C IO Expander Tools
+-------------------------------------
+
+A couple of basic tools I knocked up while playing with the MCP23017 on my Raspberry Pi. 
+More info on my blog here: http://nathan.chantrell.net
+
+
+mcp23017.py
+-----------
+A simple command line tool for setting outputs as high or low.
+
+Usage: mcp23017.py -b <bank> -o <output> -s <high|low>
+
+eg. to set GPA1 high: mcp23017.py -b a -o 1 -s high
+Response: Output GPA1 changed to high
+
+Requires python-smbus
+
+
+mcp23017.wsgi
+-------------
+
+A web interface using Python and modwsgi. Can be controlled through the built in web form or via GET requests with 
+optional JSON like responses. 
+
+eg. to set output GPA1 high: http://rpi/mcp23017.wsgi?bank=a&output=1&state=high&mode=json
+Response: {"GPA1":"HIGH"}
+
+Requires python-smbus and apache with mod-wsgi. Note that you will need to make sure your web server has permissions 
+for the i2c bus, eg. /dev/i2c-0
+
+To do: Extend to cater for input as well as output and report on the current state of the outputs.

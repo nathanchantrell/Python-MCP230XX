@@ -8,7 +8,7 @@ import smbus
 import sys
 import getopt
  
-bus = smbus.SMBus(0)
+bus = smbus.SMBus(0) # For revision 1 Raspberry Pi, change to bus = smbus.SMBus(1) for revision 2.
 
 address = 0x20 # I2C address of MCP23017
 bus.write_byte_data(0x20,0x00,0x00) # Set all of bank A to outputs 

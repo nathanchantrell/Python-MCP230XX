@@ -68,6 +68,12 @@ def main():
     else:
      print "Output GP"+bank.upper()+str(output), "is already low."
      sys.exit()
+   elif state == "read":
+    if (value >> output) & 1 :
+     print "high"
+    else:
+     print "low"
+    sys.exit()
    else:
     print "Error! state must be high or low"
     sys.exit()
